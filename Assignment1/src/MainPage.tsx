@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef, useCallback } from "react";
 import { getMockData } from "./getMockData";
 import { BeatLoader } from "react-spinners";
-
+import "./MainPage.css";
 interface MockData {
   productId: string;
   productName: string;
@@ -80,7 +80,17 @@ const InfiniteScroll: React.FC = () => {
           <div key={item.productId} className="product-item">
             <p>상품명: {item.productName}</p>
             <p>가격: ${item.price}</p>
-            <p>구매일자: {item.boughtDate}</p>
+            <p>
+              구매일자:{" "}
+              {new Date(item.boughtDate).toLocaleString("ko-KR", {
+                year: "numeric",
+                month: "long",
+                day: "numeric",
+                hour: "numeric",
+                minute: "numeric",
+                second: "numeric",
+              })}
+            </p>
           </div>
         ))}
       </div>
